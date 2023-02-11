@@ -56,7 +56,7 @@ header div {
     border-radius: 50%;
     
     display: flex;
-        /* flex para centralizar a imagem */
+        /* flex para centralizar a imagem (utilizado pela margin)*/
     padding: 4px;
 
     transition: transform .3s;
