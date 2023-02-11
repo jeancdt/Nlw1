@@ -1,0 +1,196 @@
+/* Lembrar que: o CSS não aceita que as ids ou class comecem com numeros nem caracteres especiais, exceto pelo UNDERLINE */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+        /* comando para tirar as bolinhas das listas */
+}
+
+/* os comandos feitos até aqui são pra resetar do css padrão do navegador, como bordas e somatórias de pxls */
+
+body {
+    background-image: url(./assets/bg.jpg);
+        /* url é uma função que dirá ONDE está a nossa imagem*/
+    background-position: top center;
+    background-size: 100% auto;
+        /* o peimeiro ("100%") dirá a largura, e o segundo, altura ("auto") */
+    background-repeat: no-repeat;
+    background-color: #121214;
+        /* lembrar que: a cor estará atrás da imagem*/
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+        /* colocamos a fonte encontrada no google, que foi posta no html */
+    line-height: 160%;
+        /* algumas informações, como a aqui de cima, é encontrada no figma */
+}
+
+/* main * {
+    o asterisco * significa algo UNIVERSAL - comentario
+    border: 1px solid red; 
+        essa borda mostrará todas as segmentações no html - comentario
+} */
+
+header {
+    margin-top: 32px;
+    /*text-align: center;
+         utilizamos a propriedade de "text", pois a imagem é identificada como texto,
+         porém, ao utilizar o "header div", perde-se essa propriedade */
+    
+    height: calc(120px + 32px);
+        /* colocamos a altura, pois a imagem, como retirada de um site, demorava para carregar e, enquanto os blocos
+        não indentificavam ela, eles ficavam pra cima (somatória = tamanho da imagem + 1 das bordas) */
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(990deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    
+    border-radius: 50%;
+    
+    display: flex;
+        /* flex para centralizar a imagem */
+    padding: 4px;
+
+    transition: transform .3s;
+        /* a transition só funcionará quando o programa "chamar" o efeito */
+}
+
+header div:hover {
+    /* :hover é para aplicar algo quando o mouse estiver passando por cima da imagem ou div */
+    transform: scale(1.1);
+}
+
+header img {
+    width: 100%;
+        /* o 100% é baseado na "width" do "header div" */
+    border-radius: 50%;
+}
+
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: 32px auto;
+        /* ao colocar uma borda na primeira main, a borda ficará mais a direita e, com esse comando, ela centralizará 
+        o primeiro valor significa as bordas de cima/baixo, enquanto o segundo, as laterais */
+    display: grid;
+        /* grip também pode ser substituido por: "display: flex" e "flex-direction: column" */
+    gap: 24px;
+    /* margin-top: 32px;
+        colocamos ele em comentario pois foi feito modificação no "margin" */
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(990deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+        /* coloquei todos os espaçamentos como 32, porem depois disso alterei só o do topo */
+    border-radius: 8px;
+}
+
+section h2 {
+    /* font-weight: 900;
+    font-size: 24px;
+    os codes acima foram postos em comentário, pois não alteravam com o padrao do navegador */
+    letter-spacing: -0.47px;
+        /* copiado do sigma, porém retirado as coisas que já estavam postas no css universalmente */
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex;
+        /* aqui mudamos o display das ul`s e colocamos a lista, antes blocks, para flex = in line (nesse caso) */
+    flex-wrap: wrap;
+        /* caso haja mais jogos do que caberia na largura, ele irá continuar a lista em baixo */
+    gap: 16px;
+    margin-top: 24px;
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.streamer-list img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443E54;
+}
+
+/* animation */
+
+header div {
+    animation: fromTop 1.4s .5s backwards;
+        /* o primeiro é o tempo da animação e o segundo é o delay (que pode ser posto separado também)
+        e o backwards, aplica as propriedades de baixo juntamente com essa */
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+            /* a posição inicial da imagem é sempre (0,0) */
+    }
+}
+
+main section {
+    animation: fromBottom .5s backwards;
+}
+
+main section:nth-child(1) {
+    /* escolhe os "filhos" do Main, que, nesse caso, são as section (1, 2, 3) */
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+        /* o delay não soma com o anterior, CUIDAR com isso */
+}
+
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
